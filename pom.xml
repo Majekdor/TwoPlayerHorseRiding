@@ -4,28 +4,38 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.github.kovalski</groupId>
+    <groupId>com.github.kovalski</groupId>
     <artifactId>TwoPlayerHorseRiding</artifactId>
-    <version>0.4</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>HaronkenHorses</name>
+    <name>TwoPlayerHorseRiding</name>
 
     <properties>
-        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>majek-repo</id>
+            <name>Majekdor repository</name>
+            <url>https://repo.majek.dev/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>majek-snapshots</id>
+            <name>Majekdor repository</name>
+            <url>https://repo.majek.dev/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <build>
-        <finalName>TwoPlayerHorseRiding-${project.version}-beta</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <release>17</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -36,8 +46,7 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <!-- Replace this with your package! -->
-                            <shadedPattern>org.github.kovalski.TwoPlayerHorseRiding</shadedPattern>
+                            <shadedPattern>com.github.kovalski.TwoPlayerHorseRiding</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -61,8 +70,8 @@
 
     <repositories>
         <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>papermc-repo</id>
+            <url>https://papermc.io/repo/repository/maven-public/</url>
         </repository>
         <repository>
             <id>sonatype</id>
@@ -75,16 +84,17 @@
     </repositories>
 
     <dependencies>
+        <!-- PaperMC -->
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.18-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
-            <version>1.16.5-R0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>3.4.5</version>
+            <version>5.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.bstats</groupId>
@@ -95,7 +105,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>RELEASE</version>
+            <version>23.0.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
